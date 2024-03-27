@@ -1,16 +1,31 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ChatRoom from './components/ChatRoom';
 // import BasicExample from './components/Table';
-import Example from './components/Transition';
+import { Row, Col } from 'react-bootstrap';
+import TableStructure from './components/TableStructure';
+import ChatRoom from './components/ChatRoom';
 
 function App() {
   return (
-    <div className='App'>
-      <Example />
-      <ChatRoom />
-    </div>
+    <Row>
+      <Col xs={3}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center', // Centers the child component horizontally
+            alignItems: 'center', // Centers the child component vertically
+          }}
+        >
+          <ChatRoom />
+        </div>
+      </Col>
+      <Col xs={8}>
+        <div className='App'>
+          <TableStructure />
+        </div>
+      </Col>
+    </Row>
   );
 }
 

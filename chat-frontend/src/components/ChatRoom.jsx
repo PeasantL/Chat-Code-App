@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Socket } from 'phoenix';
+import TableToast from './Toast';
 
 function ChatRoom() {
   const [messages, setMessages] = useState([]);
@@ -58,16 +59,26 @@ function ChatRoom() {
       {messages.map((msg) => (
         // Ensure you have a unique key for each message
         // The key could be the message ID or another unique property
-        <p key={msg.id}>{msg.body}</p>
+        <div style={{ margin: '5px' }}>
+          <TableToast key={msg.id} messageString={msg.body} />
+        </div>
       ))}
-      <form onSubmit={sendMessage}>
-        <input
-          type='text'
-          value={messageBody}
-          onChange={(e) => setMessageBody(e.target.value)}
-        />
-        <button type='submit'>Send</button>
-      </form>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center', // Centers the child component horizontally
+          alignItems: 'center', // Centers the child component vertically
+        }}
+      >
+        <form onSubmit={sendMessage}>
+          <input
+            type='text'
+            value={messageBody}
+            onChange={(e) => setMessageBody(e.target.value)}
+          />
+          <button type='submit'>Send</button>
+        </form>
+      </div>
     </div>
   );
 }
