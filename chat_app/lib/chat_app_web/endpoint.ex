@@ -14,11 +14,6 @@ defmodule ChatAppWeb.Endpoint do
   # Add CORSPlug before the router
   plug(CORSPlug, origin: ["http://localhost:3000", "http://192.168.1.107:3000"])
 
-  socket("/live", Phoenix.LiveView.Socket,
-    websocket: [connect_info: [session: @session_options]],
-    longpoll: [connect_info: [session: @session_options]]
-  )
-
   socket("/socket", ChatAppWeb.UserSocket,
     websocket: true,
     longpoll: false
@@ -41,11 +36,6 @@ defmodule ChatAppWeb.Endpoint do
     plug(Phoenix.CodeReloader)
     plug(Phoenix.Ecto.CheckRepoStatus, otp_app: :chat_app)
   end
-
-  plug(Phoenix.LiveDashboard.RequestLogger,
-    param_key: "request_logger",
-    cookie_key: "request_logger"
-  )
 
   plug(Plug.RequestId)
   plug(Plug.Telemetry, event_prefix: [:phoenix, :endpoint])
