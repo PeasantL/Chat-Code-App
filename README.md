@@ -1,4 +1,4 @@
-<H1>Basic Chat-App for code review. Just started.</H1>
+<H2>Basic Chat-App for code review. Protyping.</H2>
 
 
 
